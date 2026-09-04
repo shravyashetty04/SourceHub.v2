@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/parallax-interactive.css">
 </head>
 <body>
 
@@ -63,22 +64,27 @@
   <!-- =========================================================================
        2. HERO SECTION (CLEAN BRIGHT LIGHT CANVAS)
        ========================================================================= -->
-  <section class="hero-section" id="hero">
-    <!-- Dynamic Background Video with Soft Light Scrim -->
+  <section class="hero-section parallax-section" id="hero">
+    <!-- Dynamic Background Video with Reference Gradient Scrim -->
     <div class="hero-bg-wrapper">
-      <video class="hero-bg-video" autoplay muted loop playsinline poster="assets/images/hero_supply_ecosystem.jpg" id="hero-bg-video">
+      <video class="hero-bg-video" autoplay muted loop playsinline id="hero-bg-video">
         <source src="assets/videos/hero_background.mp4" type="video/mp4">
-        <source src="Commercial_video_production_in_B._202609031425.mp4" type="video/mp4">
+        <source src="Commercial_video_production_in_B…_202609031425.mp4" type="video/mp4">
       </video>
       <div class="hero-bg-overlay"></div>
     </div>
 
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-teal-1" data-parallax-speed="0.25"></div>
+    </div>
+
     <div class="container container-wide hero-main-container">
-      <!-- Top Row: Content on Left + Location Card on Right -->
+      <!-- Top Row: Content on Left -->
       <div class="hero-top-row">
         <div class="hero-content-left">
           <div class="hero-tag-smarter">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00A68C" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00DFB6" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
             <span>SMARTER RETAIL. STRONGER NETWORKS.</span>
           </div>
           
@@ -101,22 +107,13 @@
             
             <button class="btn btn-secondary" data-modal-target="app-download-modal" id="hero-cta-download">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-              <span>Download App</span>
+              <span>Explore the Platform</span>
             </button>
-          </div>
-
-          <div class="hero-social-proof">
-            <div class="avatar-stack">
-              <img src="assets/images/avatar_partner_strip.jpg" alt="Partner 1">
-              <img src="assets/images/avatar_partner_strip.jpg" alt="Partner 2" style="object-position: 50% 50%;">
-              <img src="assets/images/avatar_partner_strip.jpg" alt="Partner 3" style="object-position: 100% 50%;">
-            </div>
-            <span class="proof-text">Trusted by <strong>1000+</strong> partners across Karnataka</span>
           </div>
         </div>
       </div>
 
-      <!-- Bottom Full-Width Elevated White Glass Metrics Bar -->
+      <!-- Bottom Full-Width Elevated Dark Glass Metrics Bar -->
       <div class="hero-glass-stats-bar">
         <div class="stat-metric-cell">
           <div class="stat-metric-icon">
@@ -164,7 +161,13 @@
   <!-- =========================================================================
        3. PLATFORM IDENTITY ("What is SourceHub?")
        ========================================================================= -->
-  <section class="section-slate" id="platform">
+  <section class="section-slate parallax-section" id="platform">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-teal-2" data-parallax-speed="0.2"></div>
+      <div class="parallax-grid-mesh" data-parallax-speed="0.08"></div>
+    </div>
+
     <div class="container">
       <div style="text-align: center; max-width: 780px; margin: 0 auto 52px;">
         <span class="badge badge-teal" style="margin-bottom: 14px;">Platform Architecture</span>
@@ -174,7 +177,7 @@
 
       <div class="identity-grid">
         <!-- Card 1 -->
-        <div class="identity-card">
+        <div class="identity-card interactive-card-3d">
           <div class="identity-card-header">
             <div class="stat-metric-icon" style="width: 44px; height: 44px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
@@ -190,7 +193,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="identity-card">
+        <div class="identity-card interactive-card-3d">
           <div class="identity-card-header">
             <div class="stat-metric-icon" style="width: 44px; height: 44px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
@@ -206,7 +209,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="identity-card">
+        <div class="identity-card interactive-card-3d">
           <div class="identity-card-header">
             <div class="stat-metric-icon" style="width: 44px; height: 44px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
@@ -222,7 +225,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="identity-card">
+        <div class="identity-card interactive-card-3d">
           <div class="identity-card-header">
             <div class="stat-metric-icon" style="width: 44px; height: 44px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
@@ -243,7 +246,13 @@
   <!-- =========================================================================
        4. PROBLEM VS. SOURCEHUB SOLUTION (SPLIT COMPARISON)
        ========================================================================= -->
-  <section class="section-white" id="problem-solution">
+  <section class="section-white parallax-section" id="problem-solution">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-cyan" data-parallax-speed="0.18"></div>
+      <div class="parallax-grid-mesh" data-parallax-speed="0.06"></div>
+    </div>
+
     <div class="container container-wide">
       <div style="text-align: center; max-width: 820px; margin: 0 auto 52px;">
         <div class="hero-tag-smarter" style="margin-bottom: 14px;">
@@ -263,14 +272,14 @@
       <div class="comparison-wrapper">
         <div class="comparison-container">
           <!-- Left Card: The Problem -->
-          <div class="comparison-card problem-card">
+          <div class="comparison-card problem-card interactive-card-3d">
             <div class="comparison-header">
               <div class="comparison-header-icon-circle red">✕</div>
               <h3>The Fragmented Retailer Problem</h3>
             </div>
             <div class="comparison-list">
               <!-- Item 1 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="1">
                 <div class="comparison-item-icon-box red">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
@@ -281,7 +290,7 @@
               </div>
 
               <!-- Item 2 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="2">
                 <div class="comparison-item-icon-box red">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                 </div>
@@ -292,7 +301,7 @@
               </div>
 
               <!-- Item 3 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="3">
                 <div class="comparison-item-icon-box red">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 </div>
@@ -303,7 +312,7 @@
               </div>
 
               <!-- Item 4 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="4">
                 <div class="comparison-item-icon-box red">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
@@ -314,7 +323,7 @@
               </div>
 
               <!-- Item 5 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="5">
                 <div class="comparison-item-icon-box red">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                 </div>
@@ -341,18 +350,18 @@
               <circle cx="94" cy="170" r="4" fill="#34D399"/>
               <path d="M94 170 C 70 170, 60 100, 50 100" stroke="#34D399" stroke-width="1.5" stroke-dasharray="3 3"/>
             </svg>
-            <div class="vs-circle-badge">VS</div>
+            <div class="vs-circle-badge comparison-vs-badge">VS</div>
           </div>
 
           <!-- Right Card: The Solution -->
-          <div class="comparison-card solution-card">
+          <div class="comparison-card solution-card interactive-card-3d">
             <div class="comparison-header">
               <div class="comparison-header-icon-circle green">✓</div>
               <h3>The Unified SourceHub Solution</h3>
             </div>
             <div class="comparison-list">
               <!-- Item 1 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="1">
                 <div class="comparison-item-icon-box green">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                 </div>
@@ -363,7 +372,7 @@
               </div>
 
               <!-- Item 2 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="2">
                 <div class="comparison-item-icon-box green">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
                 </div>
@@ -374,7 +383,7 @@
               </div>
 
               <!-- Item 3 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="3">
                 <div class="comparison-item-icon-box green">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 </div>
@@ -385,9 +394,9 @@
               </div>
 
               <!-- Item 4 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="4">
                 <div class="comparison-item-icon-box green">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                 </div>
                 <div class="comparison-text">
                   <h4>Free Same-Day EV Delivery &amp; Pickup</h4>
@@ -396,7 +405,7 @@
               </div>
 
               <!-- Item 5 -->
-              <div class="comparison-item">
+              <div class="comparison-item" data-compare-pair="5">
                 <div class="comparison-item-icon-box green">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                 </div>
@@ -468,7 +477,13 @@
   <!-- =========================================================================
        5. DYNAMIC SPO PRICING & FLEXIBLE UNITS ENGINE
        ========================================================================= -->
-  <section class="section-slate" id="spo-pricing">
+  <section class="section-slate parallax-section" id="spo-pricing">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-emerald" data-parallax-speed="0.22"></div>
+      <div class="parallax-ring parallax-ring-2" data-parallax-speed="-0.12"></div>
+    </div>
+
     <div class="container">
       <div style="text-align: center; max-width: 780px; margin: 0 auto 52px;">
         <span class="badge badge-teal" style="margin-bottom: 14px;">Interactive Pricing Engine</span>
@@ -478,7 +493,7 @@
 
       <div class="pricing-engine-wrapper">
         <!-- Controls Left -->
-        <div class="pricing-controls-card">
+        <div class="pricing-controls-card interactive-card-3d">
           <!-- Product Selector -->
           <div style="margin-bottom: 24px;">
             <div class="control-label">
@@ -564,7 +579,7 @@
         </div>
 
         <!-- Output Right -->
-        <div class="pricing-result-card" id="pricing-results-display">
+        <div class="pricing-result-card interactive-card-3d" id="pricing-results-display">
           <div class="pricing-calc-header">
             <div>
               <span class="badge badge-teal" id="calc-tier-badge">GOLD TIER (19% OFF)</span>
@@ -620,17 +635,47 @@
   <!-- =========================================================================
        6. STORE FORMATS & LOGISTICS INFRASTRUCTURE
        ========================================================================= -->
-  <section class="section-white" id="store-formats">
+  <section class="section-white parallax-section" id="store-formats">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-teal-1" data-parallax-speed="0.2"></div>
+      <div class="parallax-grid-mesh" data-parallax-speed="0.07"></div>
+    </div>
+
     <div class="container">
-      <div style="text-align: center; max-width: 780px; margin: 0 auto 52px;">
+      <div style="text-align: center; max-width: 780px; margin: 0 auto 38px;">
         <span class="badge badge-teal" style="margin-bottom: 14px;">Hybrid Fulfillment Architecture</span>
         <h2 style="font-size: 2.4rem; margin-bottom: 14px;">4 Specialized Store &amp; Logistics Formats</h2>
         <p style="color: var(--text-secondary); font-size: 1.05rem;">Engineered to serve mega wholesale bulk buyers, quick-walk-in merchants, click-and-collect pickup, and rapid neighborhood last-mile dispatch.</p>
       </div>
 
+      <!-- Interactive Format Filter Pills -->
+      <div class="format-filter-bar">
+        <button class="format-filter-btn active" data-filter="all">
+          <span>All Formats</span>
+          <span class="format-count-badge">4</span>
+        </button>
+        <button class="format-filter-btn" data-filter="mega">
+          <span>Mega Wholesale</span>
+          <span class="format-count-badge">Depot</span>
+        </button>
+        <button class="format-filter-btn" data-filter="walk-in">
+          <span>Walk-In Store</span>
+          <span class="format-count-badge">Direct POS</span>
+        </button>
+        <button class="format-filter-btn" data-filter="pickup">
+          <span>Pickup Store</span>
+          <span class="format-count-badge">Express</span>
+        </button>
+        <button class="format-filter-btn" data-filter="micro">
+          <span>Smart Micro Store</span>
+          <span class="format-count-badge">Hyperlocal</span>
+        </button>
+      </div>
+
       <div class="store-formats-grid">
         <!-- Format 1: Mega Store -->
-        <div class="format-card">
+        <div class="format-card store-format-card interactive-card-3d" data-category="mega">
           <div class="format-img-wrap">
             <img src="assets/images/warehouse_interior_tech.jpg" alt="SourceHub Mega Wholesale Store" loading="lazy">
             <span class="format-badge">Bulk Wholesale</span>
@@ -656,7 +701,7 @@
         </div>
 
         <!-- Format 2: Walk-In Store -->
-        <div class="format-card">
+        <div class="format-card store-format-card interactive-card-3d" data-category="walk-in">
           <div class="format-img-wrap">
             <img src="assets/images/retail_store_modern.jpg" alt="SourceHub Walk-In Store" loading="lazy">
             <span class="format-badge">Direct Purchase</span>
@@ -682,7 +727,7 @@
         </div>
 
         <!-- Format 3: Pickup Store -->
-        <div class="format-card">
+        <div class="format-card store-format-card interactive-card-3d" data-category="pickup">
           <div class="format-img-wrap">
             <img src="assets/images/pickup_store_hub.jpg" alt="SourceHub Express Pickup Store" loading="lazy">
             <span class="format-badge">Click &amp; Collect</span>
@@ -708,7 +753,7 @@
         </div>
 
         <!-- Format 4: Smart Micro Store -->
-        <div class="format-card">
+        <div class="format-card store-format-card interactive-card-3d" data-category="micro">
           <div class="format-img-wrap">
             <img src="assets/images/micro_store_hub.jpg" alt="SourceHub Smart Micro Store" loading="lazy">
             <span class="format-badge">Hyper-Fast Last Mile</span>
@@ -739,7 +784,13 @@
   <!-- =========================================================================
        7. TAILORED DASHBOARDS BY USER ROLE
        ========================================================================= -->
-  <section class="section-slate" id="dashboards">
+  <section class="section-slate parallax-section" id="dashboards">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-teal-2" data-parallax-speed="0.2"></div>
+      <div class="parallax-grid-mesh" data-parallax-speed="0.08"></div>
+    </div>
+
     <div class="container">
       <div style="text-align: center; max-width: 780px; margin: 0 auto 52px;">
         <span class="badge badge-teal" style="margin-bottom: 14px;">Role-Tailored Intelligence</span>
@@ -766,7 +817,7 @@
       </div>
 
       <!-- Interactive Window Preview -->
-      <div class="dashboard-preview-window">
+      <div class="dashboard-preview-window interactive-card-3d">
         <div class="window-header">
           <div class="window-controls">
             <div class="ctrl-dot red"></div>
@@ -921,7 +972,13 @@
   <!-- =========================================================================
        8. SUSTAINABLE EV FLEET & LOGISTICS INTELLIGENCE
        ========================================================================= -->
-  <section class="section-white" id="ev-logistics">
+  <section class="section-white parallax-section" id="ev-logistics">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-emerald" data-parallax-speed="0.22"></div>
+      <div class="parallax-ring parallax-ring-1" data-parallax-speed="-0.14"></div>
+    </div>
+
     <div class="container">
       <div class="ev-showcase-grid">
         <div>
@@ -934,19 +991,19 @@
           </p>
 
           <div class="ev-stat-grid">
-            <div class="ev-stat-box">
+            <div class="ev-stat-box interactive-card-3d">
               <h3 id="carbon-saved-counter">14,850 kg</h3>
               <p>CO₂ Tailpipe Emissions Saved This Month</p>
             </div>
-            <div class="ev-stat-box">
+            <div class="ev-stat-box interactive-card-3d">
               <h3>2.4 Hours</h3>
               <p>Average Hyperlocal Order-to-Doorstep Delivery</p>
             </div>
-            <div class="ev-stat-box">
+            <div class="ev-stat-box interactive-card-3d">
               <h3>₹0 Delivery Fee</h3>
               <p>Zero Delivery Surcharge for Orders Above ₹3,000</p>
             </div>
-            <div class="ev-stat-box">
+            <div class="ev-stat-box interactive-card-3d">
               <h3>AI Route Engine</h3>
               <p>Multi-drop EV Route Clustering Algorithms</p>
             </div>
@@ -957,13 +1014,63 @@
           <img src="assets/images/ev_fleet_dark.jpg" alt="SourceHub Electric Delivery Scooter and Van Fleet lined up at Bengaluru B2B Fulfillment Center" loading="lazy">
         </div>
       </div>
+
+      <!-- Interactive Retailer Green Fleet Savings Calculator -->
+      <div class="ev-calc-card interactive-card-3d">
+        <div class="ev-calc-header">
+          <div class="ev-calc-title">
+            <div class="stat-metric-icon" style="width: 44px; height: 44px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <h3>Interactive Green Fleet Savings Calculator</h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Estimate how much your retail business saves per month by replacing diesel delivery with SourceHub 100% EV logistics.</p>
+            </div>
+          </div>
+          <span class="badge badge-teal">Zero Fuel Expense</span>
+        </div>
+
+        <div class="ev-slider-wrapper">
+          <div class="ev-slider-label-row">
+            <span class="ev-slider-label">Your Store's Estimated Daily Supply Distance:</span>
+            <span class="ev-slider-val-badge" id="ev-km-value">45 km / day</span>
+          </div>
+          <input type="range" class="ev-range-slider" id="ev-km-range" min="10" max="200" step="5" value="45">
+        </div>
+
+        <div class="ev-calc-results-grid">
+          <div class="ev-calc-result-box">
+            <div class="res-label">Traditional Diesel Fuel Cost</div>
+            <div class="res-value" id="ev-fuel-cost-val" style="color: #EF4444;">₹13,680</div>
+            <div class="res-sub">Estimated Monthly Fuel &amp; Maintenance</div>
+          </div>
+
+          <div class="ev-calc-result-box">
+            <div class="res-label">SourceHub EV Delivery Fee</div>
+            <div class="res-value" style="color: var(--brand-teal);">₹0</div>
+            <div class="res-sub">100% Free for Orders &gt; ₹3,000</div>
+          </div>
+
+          <div class="ev-calc-result-box highlight">
+            <div class="res-label">Your Net Monthly Profit Boost</div>
+            <div class="res-value" id="ev-savings-val" style="color: #10B981;">₹13,680</div>
+            <div class="res-sub">Saved per store every month • <strong id="ev-co2-val" style="color: var(--brand-teal-dark);">212 kg</strong> CO₂ Saved</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- =========================================================================
        9. PAN-INDIA & KARNATAKA EXPANSION FOOTPRINT
        ========================================================================= -->
-  <section class="section-slate" id="expansion">
+  <section class="section-slate parallax-section" id="expansion">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-cyan" data-parallax-speed="0.2"></div>
+      <div class="parallax-grid-mesh" data-parallax-speed="0.08"></div>
+    </div>
+
     <div class="container">
       <div style="text-align: center; max-width: 780px; margin: 0 auto 52px;">
         <span class="badge badge-teal" style="margin-bottom: 14px;">Geographic Footprint</span>
@@ -973,7 +1080,7 @@
 
       <div class="map-section-wrapper">
         <!-- Interactive Map Pins Card -->
-        <div class="interactive-map-card">
+        <div class="interactive-map-card interactive-card-3d">
           <div class="map-svg-container">
             <!-- Stylized Karnataka Map SVG Background -->
             <svg width="340" height="400" viewBox="0 0 340 400" fill="none" style="opacity: 0.95;">
@@ -1020,7 +1127,7 @@
         </div>
 
         <!-- Hub Details Card -->
-        <div class="hub-details-card" id="hub-info-panel">
+        <div class="hub-details-card interactive-card-3d" id="hub-info-panel">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
             <span class="badge badge-teal" id="hub-status-badge">Operational • 24/7 Active</span>
             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">Hub Code: #KA-BLR-01</span>
@@ -1062,9 +1169,14 @@
   <!-- =========================================================================
        10. CONVERSION BANNER
        ========================================================================= -->
-  <section class="cta-banner-section">
+  <section class="cta-banner-section parallax-section">
+    <!-- Parallax Ambient Canvas -->
+    <div class="parallax-canvas">
+      <div class="parallax-orb parallax-orb-teal-1" data-parallax-speed="0.25"></div>
+    </div>
+
     <div class="container">
-      <div class="cta-banner-card">
+      <div class="cta-banner-card interactive-card-3d">
         <div>
           <h2>Everything Your Store Needs. <br>Delivered Smarter.</h2>
           <p>Join over 12,000+ forward-thinking retailers and kiranas boosting their profit margins with SourceHub's dynamic SPO pricing and 100% EV logistics.</p>
@@ -1287,5 +1399,6 @@
   <script src="js/dashboard-tabs.js"></script>
   <script src="js/expansion-map.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/parallax-interactive.js"></script>
 </body>
 </html>

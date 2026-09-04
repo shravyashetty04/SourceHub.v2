@@ -1,0 +1,610 @@
+/* ==========================================================================
+   SOURCEHUB.IN - PARALLAX & INTERACTIVE SECTIONS DESIGN SYSTEM
+   Adds fluid scroll-driven parallax depth, 3D card physics, and interactive
+   micro-interactions WITHOUT disturbing content flow or layout stability.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PARALLAX AMBIENT BACKGROUND LAYERS (Z-INDEX: 0, POINTER-EVENTS: NONE)
+   -------------------------------------------------------------------------- */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure content sits cleanly above background parallax layers */
+.parallax-section > .container,
+.parallax-section > .container-wide,
+.parallax-section > .hero-main-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-bg-wrapper {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  z-index: 0 !important;
+  pointer-events: none;
+}
+
+.parallax-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.parallax-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.55;
+  will-change: transform;
+  pointer-events: none;
+  transition: transform 0.1s linear;
+}
+
+.parallax-orb-teal-1 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 196, 159, 0.18) 0%, rgba(0, 166, 140, 0.08) 50%, transparent 70%);
+  top: -80px;
+  right: -60px;
+}
+
+.parallax-orb-teal-2 {
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(0, 166, 140, 0.14) 0%, rgba(0, 223, 182, 0.06) 60%, transparent 75%);
+  bottom: -100px;
+  left: -80px;
+}
+
+.parallax-orb-cyan {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(0, 166, 140, 0.04) 60%, transparent 75%);
+  top: 35%;
+  left: 15%;
+}
+
+.parallax-orb-emerald {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, rgba(0, 166, 140, 0.05) 60%, transparent 75%);
+  bottom: 15%;
+  right: 12%;
+}
+
+/* Subtle Geometric Grid Mesh for Industrial / Tech supply chain feel */
+.parallax-grid-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(0, 166, 140, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.45;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 50%, #000 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 50%, #000 40%, transparent 95%);
+  will-change: transform;
+}
+
+/* Floating Accent Geometric Rings */
+.parallax-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(0, 166, 140, 0.22);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.parallax-ring-1 {
+  width: 220px;
+  height: 220px;
+  top: 15%;
+  right: 5%;
+  animation: slowSpin 40s linear infinite;
+}
+
+.parallax-ring-2 {
+  width: 140px;
+  height: 140px;
+  bottom: 20%;
+  left: 6%;
+  animation: slowSpinReverse 32s linear infinite;
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slowSpinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* --------------------------------------------------------------------------
+   2. INTERACTIVE 3D CARD PHYSICS & DYNAMIC CURSOR SPOTLIGHT
+   -------------------------------------------------------------------------- */
+.interactive-card-3d {
+  position: relative;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  will-change: transform, box-shadow;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+/* Dynamic Cursor Follow Spotlight Sheen */
+.interactive-card-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 196, 159, 0.12),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.interactive-card-3d:hover::after {
+  opacity: 1;
+}
+
+.interactive-card-3d:hover {
+  border-color: rgba(0, 166, 140, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 166, 140, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Micro-interaction on card icons */
+.interactive-card-3d:hover .stat-metric-icon,
+.interactive-card-3d:hover .identity-card-header .stat-metric-icon {
+  transform: scale(1.08) translateY(-2px);
+  background: rgba(0, 166, 140, 0.16);
+  border-color: var(--brand-teal);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-metric-icon {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. SYNCHRONIZED CROSS-COMPARISON INTERACTIVITY (PROBLEM VS SOLUTION)
+   -------------------------------------------------------------------------- */
+.comparison-item {
+  position: relative;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.comparison-item:hover {
+  transform: translateX(4px);
+}
+
+.problem-card .comparison-item:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  margin: -6px -10px;
+}
+
+.solution-card .comparison-item:hover {
+  background: rgba(0, 166, 140, 0.08);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  margin: -6px -10px;
+}
+
+/* Paired Active Highlight */
+.comparison-item.is-active-pair {
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(0, 166, 140, 0.18);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  margin: -6px -10px;
+}
+
+.problem-card .comparison-item.is-active-pair {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid #EF4444;
+}
+
+.solution-card .comparison-item.is-active-pair {
+  background: rgba(0, 166, 140, 0.12);
+  border-left: 3px solid var(--brand-teal);
+}
+
+/* Interactive Center VS Glow Indicator */
+.comparison-vs-badge {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-vs-badge.active-pulse {
+  transform: scale(1.15) rotate(4deg);
+  box-shadow: 0 0 25px rgba(0, 196, 159, 0.6);
+  border-color: var(--brand-teal-bright);
+}
+
+/* --------------------------------------------------------------------------
+   4. STORE FORMATS INTERACTIVE FILTER PILL SELECTOR
+   -------------------------------------------------------------------------- */
+.format-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+}
+
+.format-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+}
+
+.format-filter-btn:hover {
+  border-color: var(--brand-teal);
+  color: var(--brand-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.format-filter-btn.active {
+  background: var(--brand-teal);
+  color: #FFFFFF;
+  border-color: var(--brand-teal);
+  box-shadow: 0 4px 16px rgba(0, 166, 140, 0.35);
+  transform: translateY(-2px);
+}
+
+.format-filter-btn .format-count-badge {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.06);
+  font-weight: 700;
+}
+
+.format-filter-btn.active .format-count-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+/* Animated Card Highlighting on Filter */
+.store-format-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.store-format-card.dimmed {
+  opacity: 0.35;
+  filter: grayscale(0.6);
+  transform: scale(0.97);
+}
+
+.store-format-card.highlighted {
+  opacity: 1;
+  transform: scale(1.02);
+  border-color: var(--brand-teal);
+  box-shadow: 0 16px 36px rgba(0, 166, 140, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   5. INTERACTIVE GREEN FLEET SAVINGS CALCULATOR (EV SECTION)
+   -------------------------------------------------------------------------- */
+.ev-calc-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.ev-calc-card:hover {
+  border-color: var(--brand-teal-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.ev-calc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.ev-calc-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ev-calc-title h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ev-slider-wrapper {
+  margin: 28px 0 32px;
+}
+
+.ev-slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.ev-slider-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.ev-slider-val-badge {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--brand-teal-dark);
+  background: var(--brand-teal-surface);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--brand-teal-border);
+}
+
+.ev-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #E2E8F0;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.ev-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00C49F, #00A68C);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 166, 140, 0.45);
+  border: 3px solid #FFFFFF;
+  transition: transform 0.15s ease;
+}
+
+.ev-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.ev-calc-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ev-calc-result-box {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.ev-calc-result-box:hover {
+  border-color: var(--brand-teal);
+  background: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.ev-calc-result-box.highlight {
+  background: linear-gradient(135deg, rgba(0, 196, 159, 0.1), rgba(0, 166, 140, 0.05));
+  border-color: var(--brand-teal-border);
+}
+
+.ev-calc-result-box .res-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.ev-calc-result-box .res-value {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--brand-teal-dark);
+}
+
+.ev-calc-result-box .res-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   6. LUXURIOUS SCROLL REVEAL & STAGGER ANIMATIONS (BUTTERY SMOOTH)
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Stagger delay classes */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+.stagger-6 { transition-delay: 0.48s; }
+
+/* Subtle reveal scale variant for cards */
+.reveal-scale {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0) scale(0.97);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Smooth transition for interactive-card-3d once revealed */
+.interactive-card-3d.reveal-on-scroll.is-revealed,
+.interactive-card-3d.reveal-scale.is-revealed {
+  opacity: 1;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   7. INTERACTIVE HOTSPOT PINS ON DASHBOARD MOCKUP
+   -------------------------------------------------------------------------- */
+.dashboard-hotspot {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brand-teal);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 166, 140, 0.5);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.dashboard-hotspot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--brand-teal-bright);
+  animation: pulse-ring 2s infinite;
+}
+
+.dashboard-hotspot:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 20px var(--brand-teal-bright);
+}
+
+.dashboard-hotspot-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #1E232A;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-hotspot:hover .dashboard-hotspot-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   8. ACCESSIBILITY - PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-orb,
+  .parallax-grid-mesh,
+  .parallax-ring {
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  .interactive-card-3d {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  .interactive-card-3d::after {
+    display: none;
+  }
+  
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive adjust for calculator */
+@media (max-width: 768px) {
+  .ev-calc-results-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .format-filter-bar {
+    gap: 8px;
+  }
+  
+  .format-filter-btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+}
