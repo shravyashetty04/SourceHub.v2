@@ -298,17 +298,20 @@
 }
 
 /* Animated Card Highlighting on Filter */
-.store-format-card {
+.store-format-card,
+.sourcing-path-card {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.store-format-card.dimmed {
+.store-format-card.dimmed,
+.sourcing-path-card.dimmed {
   opacity: 0.35;
   filter: grayscale(0.6);
   transform: scale(0.97);
 }
 
-.store-format-card.highlighted {
+.store-format-card.highlighted,
+.sourcing-path-card.highlighted {
   opacity: 1;
   transform: scale(1.02);
   border-color: var(--brand-teal);

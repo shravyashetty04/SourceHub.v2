@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollParallax();
   initCard3DTilt();
   initProblemSolutionHoverSync();
-  initStoreFormatFilters();
+  initSourcingModes();
   initGreenFleetCalculator();
+  initMobileComparisonToggle();
   initScrollRevealObserver();
 });
 
@@ -66,7 +67,7 @@ function initCard3DTilt() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // Select interactive cards across all sections
-  const cards = document.querySelectorAll('.interactive-card-3d, .identity-card, .comparison-card, .store-format-card, .pricing-card, .ev-fleet-card, .hub-detail-card');
+  const cards = document.querySelectorAll('.interactive-card-3d, .identity-card, .comparison-card, .sourcing-path-card, .store-format-card, .pricing-card, .ev-fleet-card, .hub-detail-card');
 
   cards.forEach(card => {
     // Add base class if missing
@@ -135,35 +136,125 @@ function initProblemSolutionHoverSync() {
 }
 
 /* --------------------------------------------------------------------------
-   4. STORE FORMATS INTERACTIVE FILTER TABS
+   3B. MOBILE COMPARISON SWITCHER & 1:1 CONTRAST TOGGLE
    -------------------------------------------------------------------------- */
-function initStoreFormatFilters() {
-  const filterBtns = document.querySelectorAll('.format-filter-btn');
-  const formatCards = document.querySelectorAll('.store-format-card');
+function initMobileComparisonToggle() {
+  const pills = document.querySelectorAll('.mobile-comp-pill');
+  const matrix = document.getElementById('mobile-comparison-matrix');
+  const container = document.querySelector('.comparison-container');
 
-  if (!filterBtns.length || !formatCards.length) return;
+  if (!pills.length || !container) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const view = pill.getAttribute('data-view');
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
-
-      formatCards.forEach(card => {
-        const category = card.getAttribute('data-category') || 'all';
-
-        if (filter === 'all' || category === filter) {
-          card.classList.remove('dimmed');
-          card.classList.add('highlighted');
-          setTimeout(() => card.classList.remove('highlighted'), 500);
-        } else {
-          card.classList.add('dimmed');
-          card.classList.remove('highlighted');
-        }
-      });
+      if (view === 'compare') {
+        if (matrix) matrix.style.display = '';
+        container.classList.remove('mobile-show-problem', 'mobile-show-solution');
+        container.classList.add('mobile-show-matrix');
+      } else if (view === 'problem') {
+        if (matrix) matrix.style.display = 'none';
+        container.classList.remove('mobile-show-matrix', 'mobile-show-solution');
+        container.classList.add('mobile-show-problem');
+      } else if (view === 'solution') {
+        if (matrix) matrix.style.display = 'none';
+        container.classList.remove('mobile-show-matrix', 'mobile-show-problem');
+        container.classList.add('mobile-show-solution');
+      }
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   4. SOURCING PATHWAYS: INTERACTIVE TABS & CUSTOMER JOURNEY SEQUENCE
+   -------------------------------------------------------------------------- */
+function initSourcingModes() {
+  const tabs = document.querySelectorAll('.sourcing-tab-btn');
+  const pathCards = document.querySelectorAll('.sourcing-path-card');
+
+  if (tabs.length && pathCards.length) {
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const selected = tab.getAttribute('data-pathway') || 'all';
+
+        pathCards.forEach(card => {
+          const cardPathway = card.getAttribute('data-pathway');
+
+          if (selected === 'all' || cardPathway === selected) {
+            card.classList.remove('dimmed');
+            card.classList.add('highlighted');
+            card.style.display = '';
+            setTimeout(() => card.classList.remove('highlighted'), 500);
+          } else {
+            card.classList.add('dimmed');
+            card.classList.remove('highlighted');
+            if (window.innerWidth <= 768) {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        pathCards.forEach(card => card.style.display = '');
+      }
+    });
+  }
+
+  // Interactive Customer Journey steps highlight on card hover
+  pathCards.forEach(card => {
+    const chips = card.querySelectorAll('.journey-step-chip');
+    let stepInterval = null;
+
+    card.addEventListener('mouseenter', () => {
+      let stepIdx = 0;
+      chips.forEach(c => c.classList.remove('step-active'));
+      if (chips[0]) chips[0].classList.add('step-active');
+
+      stepInterval = setInterval(() => {
+        chips.forEach(c => c.classList.remove('step-active'));
+        stepIdx = (stepIdx + 1) % chips.length;
+        if (chips[stepIdx]) chips[stepIdx].classList.add('step-active');
+      }, 750);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (stepInterval) clearInterval(stepInterval);
+      chips.forEach(c => c.classList.remove('step-active'));
+    });
+  });
+
+  // Legacy fallback support if any old format cards are present
+  const filterBtns = document.querySelectorAll('.format-filter-btn');
+  const formatCards = document.querySelectorAll('.store-format-card');
+  if (filterBtns.length && formatCards.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        formatCards.forEach(card => {
+          const category = card.getAttribute('data-category') || 'all';
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('dimmed');
+            card.classList.add('highlighted');
+            setTimeout(() => card.classList.remove('highlighted'), 500);
+          } else {
+            card.classList.add('dimmed');
+            card.classList.remove('highlighted');
+          }
+        });
+      });
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -236,6 +327,9 @@ function initScrollRevealObserver() {
     '#spo-pricing .pricing-result-card',
     '#store-formats .format-filter-bar',
     '#store-formats .store-format-card',
+    '#store-formats .sourcing-nav-tabs',
+    '#store-formats .sourcing-path-card',
+    '#store-formats .sourcing-ecosystem-bridge',
     '#dashboards .dashboard-role-tabs',
     '#dashboards .dashboard-preview-window',
     '#ev-logistics .ev-stat-box',
@@ -260,6 +354,7 @@ function initScrollRevealObserver() {
     { selector: '#problem-solution .comparison-container', delay: 0.15 },
     { selector: '#problem-solution .comparison-highlights-bar', delay: 0.08 },
     { selector: '#store-formats .store-formats-grid', delay: 0.1 },
+    { selector: '#store-formats .sourcing-pathways-grid', delay: 0.12 },
     { selector: '#ev-logistics .ev-stat-grid', delay: 0.08 },
     { selector: '#spo-pricing .pricing-engine-wrapper', delay: 0.14 },
     { selector: '#expansion .map-section-wrapper', delay: 0.14 }
