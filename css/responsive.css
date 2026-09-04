@@ -120,72 +120,24 @@ html, body {
   }
 
   /* ------------------------------------------------------------------------
-     HAMBURGER MENU BEFORE SCROLLING (Dark glass navbar at top of page)
-     Fixes white-on-white text and washed-out button before scrolling
+     HAMBURGER MENU & MOBILE NAVIGATION (Clean Bright White Theme)
      ------------------------------------------------------------------------ */
-  .navbar:not(.scrolled) .mobile-menu-btn {
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  }
-
-  .navbar:not(.scrolled) .mobile-menu-btn:hover,
-  .navbar:not(.scrolled) .mobile-menu-btn.is-active,
-  .navbar:not(.scrolled) .mobile-menu-btn[aria-expanded="true"] {
-    background: rgba(0, 223, 182, 0.18);
-    border-color: #00DFB6;
-    color: #00DFB6;
-  }
-
-  .navbar:not(.scrolled) .nav-menu {
-    background: rgba(9, 13, 20, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.75);
-  }
-
-  .navbar:not(.scrolled) .nav-menu .nav-link {
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .navbar:not(.scrolled) .nav-menu .nav-link:hover,
-  .navbar:not(.scrolled) .nav-menu .nav-link:active {
-    color: #00DFB6;
-    background: rgba(0, 223, 182, 0.12);
-    border-color: rgba(0, 223, 182, 0.3);
-  }
-
-  .navbar:not(.scrolled) .nav-menu .nav-pill-active {
-    background: rgba(0, 223, 182, 0.16);
-    border: 1px solid rgba(0, 223, 182, 0.35);
-    color: #00DFB6;
-  }
-
-  /* ------------------------------------------------------------------------
-     HAMBURGER MENU AFTER SCROLLING (Light navbar after user scrolls)
-     Preserves the exact look that works correctly
-     ------------------------------------------------------------------------ */
-  .navbar.scrolled .mobile-menu-btn {
+  .navbar .mobile-menu-btn {
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
-  .navbar.scrolled .mobile-menu-btn:hover,
-  .navbar.scrolled .mobile-menu-btn.is-active,
-  .navbar.scrolled .mobile-menu-btn[aria-expanded="true"] {
+  .navbar .mobile-menu-btn:hover,
+  .navbar .mobile-menu-btn.is-active,
+  .navbar .mobile-menu-btn[aria-expanded="true"] {
     background: var(--brand-teal-surface);
     border-color: var(--brand-teal);
     color: var(--brand-teal-dark);
   }
 
-  .navbar.scrolled .nav-menu {
+  .navbar .nav-menu {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -193,20 +145,20 @@ html, body {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   }
 
-  .navbar.scrolled .nav-menu .nav-link {
+  .navbar .nav-menu .nav-link {
     color: var(--text-primary);
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
   }
 
-  .navbar.scrolled .nav-menu .nav-link:hover,
-  .navbar.scrolled .nav-menu .nav-link:active {
+  .navbar .nav-menu .nav-link:hover,
+  .navbar .nav-menu .nav-link:active {
     color: var(--brand-teal-dark);
     background: var(--brand-teal-surface);
     border-color: var(--brand-teal-border);
   }
 
-  .navbar.scrolled .nav-menu .nav-pill-active {
+  .navbar .nav-menu .nav-pill-active {
     background: var(--brand-teal-surface);
     border: 1px solid var(--brand-teal-border);
     color: var(--brand-teal-dark);
